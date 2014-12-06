@@ -42,7 +42,7 @@ i
 '''.parse
 		e.assertNoErrors;
 
-		assertEquals((e.elements.get(0) as VariableImpl).name, (e.elements.get(1) as VariableRefImpl).variable.name);
+		assertEquals(((e.elements.get(1) as Plus).left as VariableRef).variable, e.elements.get(0));
 
 	//
 	//((e.elements.get(1) as Plus).left as PlusImpl).variable.assertEquals(e.elements.get(0) as VariableRef)
@@ -76,8 +76,6 @@ i
 		assertRepr('''( 10 + 5 ) + ( 1 + 2 )''', "((10 + 5) + (1 + 2))")
 	}
 
-	@Test def void testPrecedences() {
-		"!true||false&&1>(1/3+5*2)".assertRepr("((!true) || (false && (1 > ((1 / 3) + (5 * 2)))))")
-	}
+	
 
 }
